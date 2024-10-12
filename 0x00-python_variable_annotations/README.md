@@ -171,3 +171,43 @@ In this case, as long as an object passed to `make_animal_speak` has a `speak` m
 2. **Duck Typing**: Focuses on what an object *can do* rather than its type.
 3. **mypy**: A tool to validate Python code against type annotations, helping ensure that your program behaves as expected.
 ---
+
+### task 9:
+Annotate the below function’s parameters and return values with the appropriate types
+```py3
+def element_length(lst):
+    return [(i, len(i)) for i in lst]
+```
+
+```bash
+bob@dylan:~$ cat 9-main.py 
+#!/usr/bin/env python3
+
+element_length =  __import__('9-element_length').element_length
+
+print(element_length.__annotations__)
+bob@dylan:~$ ./9-main.py 
+{'lst': typing.Iterable[typing.Sequence], 'return': typing.List[typing.Tuple[typing.Sequence, int]]}
+
+```
+
+
+### task 100:
+Augment the following code with the correct duck-typed annotations:
+
+```py3
+# The types of the elements of the input are not know
+def safe_first_element(lst):
+    if lst:
+        return lst[0]
+    else:
+        return None
+```
+```bash
+bob@dylan:~$ cat 100-main.py 
+#!/usr/bin/env python3
+
+safe_first_element =  __import__('100-safe_first_element').safe_first_element
+
+print(safe_first_element.__annotations__)
+```
