@@ -5,7 +5,7 @@ as argument returns their sum as a float.'''
 from typing import List, Union
 
 
-def to_kv(k: str, v: Union[int, float]) -> tuple:
+def to_kv(k: str, v: Union[int, float]) -> tuple[str, float]:
     """returns a tuple. The first element of the tuple is the string k
 
     Args:
