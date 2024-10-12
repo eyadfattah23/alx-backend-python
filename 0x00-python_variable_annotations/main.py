@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
 
-element_length = __import__('9-element_length').element_length
+zoom_array = __import__('102-type_checking').zoom_array
 
-print(element_length.__annotations__)
+print(zoom_array.__annotations__)
