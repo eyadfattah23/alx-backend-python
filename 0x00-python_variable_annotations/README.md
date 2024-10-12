@@ -1,4 +1,7 @@
 # Python - Variable Annotations 
+
+## resources:
+* https://mypy.readthedocs.io/en/latest/cheat_sheet_py3.html
 ### 1. **Type Annotations in Python 3**
 
 Type annotations in Python 3 allow you to explicitly declare the data types for function arguments, return types, and variables. Although Python is dynamically typed (you don't need to declare types), type annotations were introduced to provide a way to hint at what type a variable should be.
