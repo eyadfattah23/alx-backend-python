@@ -6,7 +6,7 @@ from typing import List
 
 
 def sum_list(input_list: List[float]) -> float:
-    """returns the string representation of the float n .
+    """returns the sum of a list as a float .
 
     Args:
         input_list (list of floats): the number to change.
