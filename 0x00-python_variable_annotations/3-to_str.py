@@ -3,13 +3,13 @@
 returns the floor of the float.'''
 
 
-def floor(n: float) -> int:
-    """returns the floor of the float n.
+def to_str(n: float) -> str:
+    """returns the string representation of the float n .
 
     Args:
         n (float): the number to change.
 
     Returns:
-        int: result of floor of n.
+        str: the string representation of the float n.
     """
-    return int(n)
+    return str(n)
