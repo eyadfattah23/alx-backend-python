@@ -2,10 +2,10 @@
 '''Define a type-annotated function sum_mixed_list
 which takes a list input_list of floats/ints
 as argument returns their sum as a float.'''
-from typing import List, Union
+from typing import Tuple, Union
 
 
-def to_kv(k: str, v: Union[int, float]) -> tuple[str, float]:
+def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
     """returns a tuple. The first element of the tuple is the string k
 
     Args:
