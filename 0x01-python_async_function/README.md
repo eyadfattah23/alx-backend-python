@@ -1,11 +1,18 @@
 # Python - Async 
 ## Resources
+### Notes:
+1. async functions return coroutine objects. Those coroutines won't be executed until it's awaited or until it's wrapped inside a task object.
+
+2. A Task is a way to schedule coroutines to run as soon as possible instead of waiting for each one.
+
+3. `asyncio.run` will execute a coroutine and return the result (no async/await needed).
 
 #### Read or watch:
 
 * Async IO in Python: A Complete Walkthrough
 * asyncio - Asynchronous I/O
 * random.uniform
+* https://www.youtube.com/watch?v=Qb9s3UiMSTA  
 
 ## Learning Objectives
 
