@@ -230,3 +230,9 @@ Mocks are essential tools in testing, allowing for:
 - **Property mocking**: Mocking even read-only properties with `PropertyMock`.
 
 Would you like to explore more advanced mocking patterns, such as creating side effects or using `patch` in different contexts?
+-----
+
+
+[parameterization](https://medium.com/@samarthgvasist/parameterized-unit-testing-in-python-9be82fa7e17f)
+
+https://pypi.org/project/parameterized/
