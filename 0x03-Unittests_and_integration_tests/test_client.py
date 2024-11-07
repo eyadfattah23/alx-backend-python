@@ -53,7 +53,7 @@ class TestGithubOrgClient(TestCase):
             self.assertEqual("mock.github.com/repos", inst._public_repos_url)
 
     @patch("client.get_json")
-    def test_public_repos(self, mock_get_json):
+    def test_public_repos(self, mock_get_json: Callable):
         """Test that the list of repos is what's expected.
             by testing public_repos method.
         """
