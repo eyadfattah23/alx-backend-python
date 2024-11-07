@@ -14,7 +14,7 @@ class TestGithubOrgClient(TestCase):
     @parameterized.expand(['google', 'abc'])
     @patch('client.get_json')  # where it's used not where it's defined
     def test_org(self, org: str, mock_org: Callable):
-        """_summary_
+        """test org property/method in GithubOrgClient.
 
         Args:
             mock_org (_type_): _description_
