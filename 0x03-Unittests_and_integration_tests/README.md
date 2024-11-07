@@ -236,3 +236,13 @@ Would you like to explore more advanced mocking patterns, such as creating side 
 [parameterization](https://medium.com/@samarthgvasist/parameterized-unit-testing-in-python-9be82fa7e17f)
 
 https://pypi.org/project/parameterized/
+
+
+[task 5 resource](https://stackoverflow.com/questions/11836436/how-to-mock-a-readonly-property-with-mock):
+
+
+    Implement the `test_public_repos_url` method to unit-test `GithubOrgClient._public_repos_url`.
+
+    Use patch as a context manager to patch `GithubOrgClient.org` and make it return a known payload.
+
+    Test that the result of `_public_repos_url` is the expected one based on the mocked payload.
