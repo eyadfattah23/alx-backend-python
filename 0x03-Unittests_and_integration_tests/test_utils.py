@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Create a TestAccessNestedMap unit test for utils.access_nested_map
+Create unittests for utils file
 '''
 
 from parameterized import parameterized
