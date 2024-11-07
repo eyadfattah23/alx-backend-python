@@ -5,7 +5,7 @@ from unittest import TestCase
 from unittest.mock import Mock, patch, PropertyMock
 from client import GithubOrgClient
 from utils import get_json
-from typing import (Callable)
+from typing import (Callable, Dict)
 
 
 class TestGithubOrgClient(TestCase):
@@ -73,3 +73,15 @@ class TestGithubOrgClient(TestCase):
             self.assertListEqual(["truth", "lie"], inst.public_repos())
             mock_repo_url.assert_called_once()
             mock_get_json.assert_called_once()
+
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False),
+    ])
+    def test_has_license(self, repo: Dict[str, Dict],
+                         license_key: str, expected: bool):
+        """unit-test GithubOrgClient.has_license.
+        """
+
+        self.assertEqual(GithubOrgClient.has_license(
+            repo, license_key), expected)
