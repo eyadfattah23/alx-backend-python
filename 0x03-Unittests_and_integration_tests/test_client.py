@@ -62,7 +62,7 @@ class TestGithubOrgClient(TestCase):
                                           "api.github.com/repos/test/truth"},
                                       {'id': 123, 'name': 'lie',
                                       'url':
-                                          "api.github.com/repos/test/lie"},]
+                                          "api.github.com/repos/test/lie"}]
 
         with patch.object(GithubOrgClient, '_public_repos_url',
                           new_callable=PropertyMock) as mock_repo_url:
