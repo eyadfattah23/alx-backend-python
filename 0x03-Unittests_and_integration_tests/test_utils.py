@@ -60,19 +60,19 @@ class TestGetJson(TestCase):
         test_url = "http://example.com"
         test_payload = {"payload": True}
 
-        mock_response.json.return_value = test_payload
-        mock_get_json.return_value = mock_response
+        mock_response.return_value = test_payload
+        mock_get_json.return_value.json = mock_response
 
         data = get_json(test_url)
-        mock_get_json.assert_called_with(test_url)
+        mock_get_json.assert_called_once_with(test_url)
 
         self.assertEqual(data, test_payload)
 
         test_url = "http://holberton.io"
         test_payload = {"payload": False}
 
-        mock_response.json.return_value = test_payload
-        mock_get_json.return_value = mock_response
+        mock_response.return_value = test_payload
+        mock_get_json.return_value.json = mock_response
 
         data = get_json(test_url)
         mock_get_json.assert_called_with(test_url)
