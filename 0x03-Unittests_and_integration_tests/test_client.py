@@ -132,7 +132,11 @@ class TestIntegrationGithubOrgClient(TestCase):
         self.assertListEqual(client.public_repos(
             "apache-2.0"), self.apache2_repos)
 
+        self.assertNotEqual(client.public_repos(
+            "bsl-1.0"), self.apache2_repos)
         # print(client.public_repos('bsl-1.0')) -> ['cpp-netlib']
+        self.assertEqual(client.public_repos(
+            "eyad"), [])
 
         self.mock_get.assert_called()
 
