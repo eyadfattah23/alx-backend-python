@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 '''Unittests for client file'''
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from unittest import TestCase
 from unittest.mock import Mock, patch, PropertyMock
 from client import GithubOrgClient
 from utils import get_json
 from typing import (Callable, Dict)
+from fixtures import TEST_PAYLOAD
+import requests
 
 
 class TestGithubOrgClient(TestCase):
@@ -85,3 +87,54 @@ class TestGithubOrgClient(TestCase):
 
         self.assertEqual(GithubOrgClient.has_license(
             repo, license_key), expected)
+
+
+@parameterized_class(("org_payload", "repos_payload",
+                      "expected_repos", "apache2_repos"),
+                     TEST_PAYLOAD
+                     )
+class TestIntegrationGithubOrgClient(TestCase):
+    """test the GithubOrgClient.public_repos method in an integration test.
+    """
+    @classmethod
+    def setUpClass(cls):
+        """method called once before executing all tests.
+            to Patch requests.get to use mock data.
+        """
+        cls.get_patcher = patch('requests.get')
+        cls.mock_get = cls.get_patcher.start()
+        cls.mock_get.return_value.json.side_effect = [
+            cls.org_payload, cls.repos_payload]
+
+        pass
+
+    def test_public_repos(self):
+        """test public_repos method in an integration test.
+                            (no external requests)
+                        """
+        client = GithubOrgClient('blablabla')
+
+        # Check org payload
+        self.assertEqual(client.org, self.org_payload)
+
+        # Check repos payload
+        self.assertEqual(client.repos_payload, self.repos_payload)
+
+        # Test public_repos without a license filter
+        self.assertListEqual(client.public_repos(), self.expected_repos)
+
+        # Test public_repos with 'apache-2.0' license filter
+        self.assertListEqual(client.public_repos(
+            "apache-2.0"), self.apache2_repos)
+
+        # print(client.public_repos('bsl-1.0')) -> ['cpp-netlib']
+
+        self.mock_get.assert_called()
+
+    @classmethod
+    def tearDownClass(cls):
+        """method called once after executing all tests.
+        to stop patching requests.get.
+        """
+        cls.get_patcher.stop()
+        pass
