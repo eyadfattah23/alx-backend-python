@@ -61,7 +61,7 @@ class TestGetJson(TestCase):
         test_payload = {"payload": True}
 
         mock_response.return_value = test_payload
-        mock_get_json.return_value.json = mock_response
+        mock_get_json.return_value.json.return_value = mock_response()
 
         data = get_json(test_url)
         mock_get_json.assert_called_once_with(test_url)
@@ -72,7 +72,7 @@ class TestGetJson(TestCase):
         test_payload = {"payload": False}
 
         mock_response.return_value = test_payload
-        mock_get_json.return_value.json = mock_response
+        mock_get_json.return_value.json.return_value = mock_response()
 
         data = get_json(test_url)
         mock_get_json.assert_called_with(test_url)
