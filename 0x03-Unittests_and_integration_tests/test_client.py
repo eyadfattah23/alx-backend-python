@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''Unittests for client file'''
 from parameterized import parameterized, parameterized_class
-from unittest import TestCase
+from unittest import TestCase, main
 from unittest.mock import Mock, patch, PropertyMock
 from client import GithubOrgClient
 from utils import get_json
@@ -135,3 +135,7 @@ class TestIntegrationGithubOrgClient(TestCase):
         # print(client.public_repos('bsl-1.0')) -> ['cpp-netlib']
 
         self.mock_get.assert_called()
+
+
+if __name__ == "__main__":
+    main()
