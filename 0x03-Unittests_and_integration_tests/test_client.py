@@ -132,13 +132,37 @@ class TestIntegrationGithubOrgClient(TestCase):
         self.assertListEqual(client.public_repos(
             "apache-2.0"), self.apache2_repos)
 
+        # print(client.public_repos('bsl-1.0')) -> ['cpp-netlib']
         self.assertNotEqual(client.public_repos(
             "bsl-1.0"), self.apache2_repos)
-        # print(client.public_repos('bsl-1.0')) -> ['cpp-netlib']
         self.assertEqual(client.public_repos(
             "eyad"), [])
 
         self.mock_get.assert_called()
+
+    def test_public_repos_with_license(self):
+        """test the public_repos with the argument license="apache-2.0"
+        """
+        self.mock_get.return_value.json.side_effect = [
+            self.org_payload, self.repos_payload]
+        client = GithubOrgClient('blablabla')
+        # Check org payload
+        self.assertEqual(client.org, self.org_payload)
+
+        # Check repos payload
+        self.assertEqual(client.repos_payload, self.repos_payload)
+        # Test public_repos without a license filter
+        self.assertListEqual(client.public_repos(), self.expected_repos)
+
+        # Test public_repos with 'apache-2.0' license filter
+        self.assertListEqual(client.public_repos(
+            "apache-2.0"), self.apache2_repos)
+
+        # print(client.public_repos('bsl-1.0')) -> ['cpp-netlib']
+        self.assertNotEqual(client.public_repos(
+            "bsl-1.0"), self.apache2_repos)
+        self.assertEqual(client.public_repos(
+            "eyad"), [])
 
 
 if __name__ == "__main__":
