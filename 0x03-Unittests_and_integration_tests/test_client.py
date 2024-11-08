@@ -115,8 +115,7 @@ class TestIntegrationGithubOrgClient(TestCase):
 
     def test_public_repos(self):
         """test public_repos method in an integration test.
-                            (no external requests)
-                        """
+                            (no external requests)"""
         client = GithubOrgClient('blablabla')
 
         # Check org payload
@@ -141,7 +140,7 @@ class TestIntegrationGithubOrgClient(TestCase):
         self.mock_get.assert_called()
 
     def test_public_repos_with_license(self):
-        """test the public_repos with the argument license="apache-2.0"
+        """test the public_repos with the argument
         """
         self.mock_get.return_value.json.side_effect = [
             self.org_payload, self.repos_payload]
