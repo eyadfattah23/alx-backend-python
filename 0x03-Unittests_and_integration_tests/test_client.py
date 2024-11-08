@@ -106,7 +106,12 @@ class TestIntegrationGithubOrgClient(TestCase):
         cls.mock_get.return_value.json.side_effect = [
             cls.org_payload, cls.repos_payload]
 
-        pass
+    @classmethod
+    def tearDownClass(cls):
+        """method called once after executing all tests.
+        to stop patching requests.get.
+        """
+        cls.get_patcher.stop()
 
     def test_public_repos(self):
         """test public_repos method in an integration test.
@@ -130,11 +135,3 @@ class TestIntegrationGithubOrgClient(TestCase):
         # print(client.public_repos('bsl-1.0')) -> ['cpp-netlib']
 
         self.mock_get.assert_called()
-
-    @classmethod
-    def tearDownClass(cls):
-        """method called once after executing all tests.
-        to stop patching requests.get.
-        """
-        cls.get_patcher.stop()
-        pass
